@@ -1,9 +1,15 @@
 import React from "react";
 import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function Footer() {
   return (
-    <div className="bg-[#222222] px-4 py-8 flex items-center justify-between text-slate-300">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.5, easing: "ease" }}
+      className="bg-[#222222] px-4 py-8 flex items-center justify-between text-slate-300"
+    >
       <div className="flex-1">
         <p>Frequently Asked Questions</p>
         <p>Refund policy</p>
@@ -29,7 +35,7 @@ function Footer() {
         <p>Blog</p>
         <p>Contact Us</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

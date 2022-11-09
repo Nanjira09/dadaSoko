@@ -7,7 +7,7 @@ function Navbar({ categories, setFilter }) {
   };
 
   return (
-    <div className="bg-[#ADA89F] h-16 flex justify-between items-center px-3 z-40 sticky top-0">
+    <div className="bg-[#ADA89F] h-16 flex justify-between items-center px-3 z-40 fixed left-0 right-0 top-0">
       <div>
         <h2 className="font-bold text-2xl tracking-widest italic -skew-y-12">
           Soko

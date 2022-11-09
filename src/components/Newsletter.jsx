@@ -1,9 +1,14 @@
-import React from "react";
 import { FaChevronRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function Newsletter() {
   return (
-    <div className="flex flex-col space-y-3 py-8 items-center bg-[#ADA89F] justify-center m-7">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1.5, easing: "easeOut" }}
+      className="flex flex-col space-y-3 py-8 items-center bg-[#ADA89F] justify-center m-7"
+    >
       <h3 className="font-bold text-xl uppercase tracking-widest">
         Newsletter
       </h3>
@@ -21,7 +26,7 @@ function Newsletter() {
           subscribe <FaChevronRight size={12} />
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

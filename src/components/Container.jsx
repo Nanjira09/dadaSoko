@@ -1,15 +1,46 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hide: {
+    opacity: 0,
+    y: 30,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delayChildren: 1.5,
+      easing: "ease",
+    },
+  },
+};
+
+const pItemVariants = {
+  hide: { opacity: 0 },
+  show: { opacity: 1 },
+};
 
 function Container({ products }) {
   return (
     <div className="my-10">
-      <h2 className="uppercase font-bold text-2xl tracking-wider text-center">
+      <motion.h2
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0, duration: 0.5 }}
+        className="uppercase font-bold text-2xl tracking-wider text-center"
+      >
         Featured Collection
-      </h2>
+      </motion.h2>
       <div className="flex flex-wrap justify-evenly p-3 my-3">
         {products.map((product) => (
-          <div
+          <motion.div
+            variants={containerVariants}
+            initial="hide"
+            whileInView="show"
+            viewport={{ once: true }}
             className="max-h-[300px] max-w-[300px] flex flex-col shadow-lg group my-5 cursor-pointer"
             key={product.id}
           >
@@ -24,12 +55,15 @@ function Container({ products }) {
               </button>
             </div>
             <div className="flex flex-col justify-center items-center py-2 px-4">
-              <p className="text-center font-semibold text-sm">
+              <motion.p
+                variants={pItemVariants}
+                className="text-center font-semibold text-sm"
+              >
                 {product?.title}
-              </p>
-              <p>${product?.price}</p>
+              </motion.p>
+              <motion.p variants={pItemVariants}>${product?.price}</motion.p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

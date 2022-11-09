@@ -26,7 +26,7 @@ function App() {
       const items = products.filter((product) => product.category === filter);
       setFilteredProducts(items);
     }
-  }, [filter]);
+  }, [filter, products]);
 
   useEffect(() => {
     (async () => {
@@ -36,12 +36,16 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Navbar categories={categories} setFilter={setFilter} />
-      <Banner product={products[0]} />
-      <Container products={filteredProducts} />
-      <Newsletter />
-      <Footer />
+      {products.length > 0 && (
+        <>
+          <Banner product={products[0]} />
+          <Container products={filteredProducts} />
+          <Newsletter />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }

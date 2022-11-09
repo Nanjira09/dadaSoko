@@ -13,7 +13,7 @@ function Navbar({ categories, setFilter }) {
           Soko
         </h2>
       </div>
-      <div className="flex items-center h-full space-x-3">
+      <div className="hidden md:flex items-center h-full space-x-3">
         <p
           className="font-semibold cursor-pointer hover:opacity-30 transition ease-in delay-150"
           onClick={() => setFilter("")}

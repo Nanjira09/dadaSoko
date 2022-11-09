@@ -8,7 +8,7 @@ function Footer() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5, easing: "ease" }}
-      className="bg-[#222222] px-4 py-8 flex items-center justify-between text-slate-300"
+      className="bg-[#222222] px-4 py-8 flex flex-col md:flex-row md:items-center justify-between text-slate-300"
     >
       <div className="flex-1">
         <p>Frequently Asked Questions</p>

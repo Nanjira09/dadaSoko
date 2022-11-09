@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function Banner({ product }) {
   return (
-    <div className="flex h-[600px] my-4">
+    <div className="flex flex-col md:flex-row h-[600px] my-4">
       <div className="flex-1 overflow-hidden">
         <motion.img
           initial={{ opacity: 0, x: -100 }}

@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchCategories, fetchProducts } from "../requests";
 import Banner from "./components/Banner";
 import Container from "./components/Container";
 import Footer from "./components/Footer";
+import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 import Newsletter from "./components/Newsletter";
+import { StoreContext } from "./context";
 
 function App() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("");
+  const { showModal } = useContext(StoreContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
@@ -38,6 +41,7 @@ function App() {
   return (
     <div className="min-h-screen overflow-hidden">
       <Navbar categories={categories} setFilter={setFilter} />
+      {showModal && <Modal />}
       {products.length > 0 && (
         <>
           <Banner product={products[0]} />

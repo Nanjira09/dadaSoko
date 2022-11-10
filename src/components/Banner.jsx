@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { StoreContext } from "../context";
 
 function Banner({ product }) {
+  const { toggleModal, addToCart } = useContext(StoreContext);
+  const handleAdd = (item) => {
+    addToCart(item);
+    toggleModal();
+  };
   return (
     <div className="flex flex-col md:flex-row h-[600px] my-4">
       <div className="flex-1 overflow-hidden">
@@ -28,7 +34,10 @@ function Banner({ product }) {
         <p className="text-lg font-semibold tracking-wider">
           ${product?.price}
         </p>
-        <button className="bg-slate-200 text-gray-500 hover:text-opacity-30 flex items-center justify-center uppercase p-2 cursor-pointer">
+        <button
+          onClick={() => handleAdd(product)}
+          className="bg-slate-200 text-gray-500 hover:text-opacity-30 flex items-center justify-center uppercase p-2 cursor-pointer"
+        >
           Add to cart <FaPlus className="ml-2" />
         </button>
       </motion.div>

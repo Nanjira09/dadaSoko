@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaSistrix } from "react-icons/fa";
+import { StoreContext } from "../context";
 
 function Navbar({ categories, setFilter }) {
+  const { toggleModal, products } = useContext(StoreContext);
   const handleChange = (cat) => {
     setFilter(cat);
   };
@@ -32,8 +34,11 @@ function Navbar({ categories, setFilter }) {
       </div>
       <div className="flex items-center h-full space-x-2">
         <FaSistrix className="cursor-pointer hover:opacity-30 transition ease-out delay-100" />
-        <p className="font-semibold cursor-pointer hover:opacity-30 transition ease-out delay-100">
-          Cart (0)
+        <p
+          onClick={() => toggleModal()}
+          className="font-semibold cursor-pointer hover:opacity-30 transition ease-out delay-100"
+        >
+          Cart ({products.length})
         </p>
       </div>
     </div>

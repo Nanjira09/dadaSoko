@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { StoreContext } from "../context";
 
 const containerVariants = {
   hide: {
@@ -24,6 +25,12 @@ const pItemVariants = {
 };
 
 function Container({ products }) {
+  const { toggleModal, addToCart } = useContext(StoreContext);
+
+  const handleAdd = (item) => {
+    addToCart(item);
+    toggleModal();
+  };
   return (
     <div className="my-10">
       <motion.h2
@@ -50,7 +57,10 @@ function Container({ products }) {
                 className="h-full w-full object-contain"
                 alt={product?.title}
               />
-              <button className="absolute bottom-0 left-0 right-0 py-2 px-4 uppercase hidden group-hover:flex justify-center items-center bg-black text-slate-400 hover:text-opacity-50">
+              <button
+                onClick={() => handleAdd(product)}
+                className="absolute bottom-0 left-0 right-0 py-2 px-4 uppercase hidden group-hover:flex justify-center items-center bg-black text-slate-400 hover:text-opacity-50"
+              >
                 Add to cart <FaPlus className="ml-2" />
               </button>
             </div>

@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { StoreContext } from "../context";
+import { toast } from "react-toastify";
 
 function Modal() {
   const { toggleModal, products, addToCart, deleteFromCart } =
     useContext(StoreContext);
+  const notify = () => toast("Not implemented yet!!");
 
   const total = products.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
 
@@ -83,7 +85,10 @@ function Modal() {
                   >
                     Continue Shopping
                   </button>
-                  <button className="flex-1 bg-black text-white text-sm uppercase py-3">
+                  <button
+                    onClick={notify}
+                    className="flex-1 bg-black text-white text-sm uppercase py-3"
+                  >
                     Checkout
                   </button>
                 </div>

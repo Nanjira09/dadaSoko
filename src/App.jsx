@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { fetchCategories, fetchProducts } from "../requests";
+import { ToastContainer } from "react-toastify";
 import Banner from "./components/Banner";
 import Container from "./components/Container";
 import Footer from "./components/Footer";
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <div className="min-h-screen overflow-hidden">
+      <ToastContainer position="top-center" autoClose="2000" />
       <Navbar categories={categories} setFilter={setFilter} />
       {showModal && <Modal />}
       {products.length > 0 && (
